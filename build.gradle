@@ -1,0 +1,21 @@
+apply plugin:'groovy'
+
+repositories{
+  jcenter()
+  flatDir{
+    dirs 'libs'
+  }
+}
+
+dependencies{
+  compile 'org.codehaus.groovy:groovy-all:2.4.0-rc-2'
+  compile 'org.rxtx:rxtx:2.1.7' 
+  compile 'org.jfree:jfreechart:1.0.19'
+  compile name:'RXTXcomm'
+}
+
+task run(type: JavaExec){
+  main = 'Main'
+  classpath sourceSets.main.runtimeClasspath 
+  systemProperty "java.library.path","libs"
+}
