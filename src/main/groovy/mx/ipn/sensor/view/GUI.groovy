@@ -2,6 +2,7 @@ package mx.ipn.sensor.view
 import mx.ipn.sensor.utils.ArduinoConnection
 import groovy.swing.SwingBuilder
 import javax.swing.WindowConstants as WC
+import org.jfree.chart.JFreeChart
 import org.jfree.chart.ChartFactory
 import org.jfree.chart.ChartPanel
 import org.jfree.data.category.DefaultCategoryDataset
