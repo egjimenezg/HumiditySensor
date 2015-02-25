@@ -6,9 +6,11 @@ import org.jfree.chart.JFreeChart
 import org.jfree.chart.ChartFactory
 import org.jfree.chart.ChartPanel
 import org.jfree.data.category.DefaultCategoryDataset
+import org.jfree.chart.plot.XYPlot
+import org.jfree.chart.axis.NumberAxis
 import org.jfree.chart.plot.PlotOrientation as Orientation
 import org.jfree.data.general.SeriesException
-import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYDataset
 import org.jfree.data.time.TimeSeries
 import org.jfree.data.time.TimeSeriesCollection 
 
@@ -17,6 +19,8 @@ class GUI{
   TimeSeries series
   XYDataset dataSet
   JFreeChart chart
+  XYPlot xyplot
+  NumberAxis range
 
   def GUI(){
     initComponents(); 
@@ -29,12 +33,16 @@ class GUI{
     series = new TimeSeries("Sensor Data")
     dataSet = new TimeSeriesCollection(series)
     chart = ChartFactory.createTimeSeriesChart(*labels, dataSet, *options)
+    xyplot = (XYPlot)chart.plot 
+    range = xyplot.getRangeAxis()
+    range.setRange(0,100)
     def swing = new SwingBuilder()
     def frame = swing.frame(title:"Sensor de humedad",
                             defaultCloseOperation:WC.EXIT_ON_CLOSE){
       panel(id:'canvas'){ widget(new ChartPanel(chart))}
     } 
-
+    
+    
     frame.pack()
     frame.show()
   }

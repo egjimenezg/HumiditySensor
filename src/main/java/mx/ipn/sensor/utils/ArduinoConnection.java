@@ -18,7 +18,7 @@ public class ArduinoConnection{
   private SerialPort serialPort;
   private OutputStream output;
   private InputStream input;
-  private final String PORT_NAME = "/dev/tty.usbmodem1451";
+  private final String PORT_NAME = "/dev/tty.usbmodem1411";
   private final int TIME_OUT = 200;
   private final int DATA_RATE = 9600;
   
@@ -31,7 +31,6 @@ public class ArduinoConnection{
     Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();
     while(portEnum.hasMoreElements()){
       CommPortIdentifier currPortId = ((CommPortIdentifier) portEnum.nextElement());
-
       if(PORT_NAME.equals(currPortId.getName())){
         portId = currPortId;
         return;
